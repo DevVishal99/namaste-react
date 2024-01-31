@@ -52,3 +52,12 @@
 .search{
     margin: 12px;
 }
+
+.filter-btn{
+    margin: 10px;
+    cursor: pointer;
+}
+
+.filter-btn > button{
+    cursor: pointer;
+}
