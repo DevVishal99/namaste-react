@@ -24,6 +24,7 @@
 .nav-items > ul > li {
     padding: 10px;
     margin: 10px;
+    cursor: pointer;
 }
 
 .res-card{
@@ -60,4 +61,32 @@
 
 .filter-btn > button{
     cursor: pointer;
+}
+
+.shimmer-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.shimmer-card{
+    height: 350px;
+    width: 193px;
+    margin: 10px;
+    background-color: lightgray;
+    background: linear-gradient(120deg,
+         rgba(255, 255, 0, 0.2) 30%,
+         rgba(255, 255, 0, 0.2) 50%,
+         rgba(255, 0, 255, 0.2) 80%);
+         animation: shimmer 2s infinite linear;
+}
+
+.login-btn{
+    padding: 4px 15px;
+    margin-top: 0px;
+    cursor: pointer;
+    margin: -5px;
+}
+.filter-btn{
+    margin: 10px;
+    display: flex;
+    gap: 10px;
 }
