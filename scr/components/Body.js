@@ -49,7 +49,7 @@ const Body = () => {
                         (res) => res.info.avgRating >= 4.3
                     );
 
-                    setListOfRestorents(filteredList)
+                    setFilteredRestaunrents(filteredList)
                     
 
                 }}
