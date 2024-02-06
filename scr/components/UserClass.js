@@ -1,5 +1,4 @@
 import React from "react";
-import Para from "./Para";
 
 class UserClass extends React.Component {
   constructor(props) {

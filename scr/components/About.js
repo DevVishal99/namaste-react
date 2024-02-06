@@ -28,10 +28,7 @@ class About extends React.Component{
                 <h2>
                     Our Team
                 </h2>
-                <UserClass name ={"First"} location={"Bangalore"} contact ={"vishal@gmail.com"}/>
-            
-                
-                
+                <UserClass name ={"First"} location={"Bangalore"} contact ={"vishal@gmail.com"}/>    
             </div>
 
         )
