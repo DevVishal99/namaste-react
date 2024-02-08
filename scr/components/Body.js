@@ -1,4 +1,4 @@
-import ResCard from "./ResCard";
+import ResCard, {withOpenTime} from "./ResCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -9,6 +9,10 @@ const Body = () => {
   const [filteredRestaurents, setFilteredRestaunrents] = useState([]);
   const [searchText, setSearchText] = useState("");
   const OnlineStatus = useOnlineStatus();
+
+  const ResWithOpenTime = withOpenTime(ResCard);
+
+
 
   useEffect(() => {
     fetchData();
@@ -37,6 +41,7 @@ const Body = () => {
     <>
       <div className="filter-btn">
         <input
+        className="m-5 p-1 border-inherit border-x-black"
           type="text"
           value={searchText}
           onChange={(e) => {
@@ -44,7 +49,8 @@ const Body = () => {
           }}
         />
         <button
-          className="search-btn"
+
+          className="bg-green-300 m-2 px-4 py-1 rounded-lg hover:bg-green-500 font-bold"
           onClick={() => {
             const filteredRes = listOfRestorents.filter((res) =>
               res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -52,9 +58,10 @@ const Body = () => {
             setFilteredRestaunrents(filteredRes);
           }}
         >
-          search
+          Search
         </button>
         <button
+        className="ml-5 bg-gray-300 m-2 px-4 py-1 rounded-lg hover:bg-green-500 font-bold"
           onClick={() => {
             const filteredList = listOfRestorents?.filter(
               (res) => res.info.avgRating >= 4.3
@@ -67,13 +74,15 @@ const Body = () => {
         </button>
       </div>
 
-      <div className="res-container">
+      <div className="flex flex-wrap  gap-5 bg">
         {filteredRestaurents.map((restaurant) => (
           <Link
             to={"/restaurants/" + restaurant?.info?.id}
             key={restaurant?.info?.id}
           >
-            <ResCard resData={restaurant} />
+            {restaurant.info.isOpen ? <ResWithOpenTime resData={restaurant}/> : <ResCard resData={restaurant} />}
+
+            
           </Link>
         ))}
       </div>
