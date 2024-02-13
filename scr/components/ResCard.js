@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { RES_IMG } from "../utlis/constants";
+import UserContext from "../utlis/UserContext";
 
 const ResCard = (props) => {
+  const {loggedInUser} = useContext(UserContext);
   const { resData } = props;
   const { name, cuisines, avgRating, costForTwo, cloudinaryImageId } =
     resData?.info;
@@ -18,6 +21,7 @@ const ResCard = (props) => {
       </h4>
       <h4 className="font-bold m-2">Ratings - {avgRating}</h4>
       <h4 className="font-bold m-2">Cost for two : {costForTwo} </h4>
+      <h4 className="font-bold m-2">User : {loggedInUser}  </h4>
     </div>
   );
 };

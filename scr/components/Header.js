@@ -1,11 +1,15 @@
 import { LOGO_IMG } from "../utlis/constants";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utlis/useOnlineStatus";
+import UserContext from "../utlis/UserContext";
 
 const Header = () => {
     const [loginBtn , setLoginBtn] = useState('login') 
     const OnlineStatus = useOnlineStatus();
+    const data = useContext(UserContext);
+    const {loggedInUser} = data;
+    
     return (
         <div className="flex justify-between bg-pink-100 shadow-lg">
 
@@ -32,6 +36,7 @@ const Header = () => {
                             {loginBtn}
                         </button>
                     </li>
+                    <li className="p-5  m-5  hover:bg-pink-300 hover:rounded-xl">{loggedInUser}</li>
                 </ul>
             </div>
         </div>

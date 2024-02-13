@@ -1,8 +1,9 @@
-import ResCard, {withOpenTime} from "./ResCard";
-import { useState, useEffect } from "react";
+import ResCard, { withOpenTime } from "./ResCard";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utlis/useOnlineStatus";
+import UserContext from "../utlis/UserContext";
 
 const Body = () => {
   const [listOfRestorents, setListOfRestorents] = useState([]);
@@ -11,8 +12,7 @@ const Body = () => {
   const OnlineStatus = useOnlineStatus();
 
   const ResWithOpenTime = withOpenTime(ResCard);
-
-
+  const {loggedInUser, setUserName } = useContext(UserContext);
 
   useEffect(() => {
     fetchData();
@@ -33,7 +33,12 @@ const Body = () => {
     );
   };
 
-  if (OnlineStatus === false) return <h2>Seems like you are offline.. Please Check Your Internet Connection🫠🫠</h2>
+  if (OnlineStatus === false)
+    return (
+      <h2>
+        Seems like you are offline.. Please Check Your Internet Connection🫠🫠
+      </h2>
+    );
 
   return listOfRestorents.length === 0 ? (
     <Shimmer />
@@ -41,15 +46,13 @@ const Body = () => {
     <>
       <div className="filter-btn">
         <input
-        className="m-5 p-1 border-inherit border-x-black"
-          type="text"
+          className="m-5 p-1 border border-black"
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
           }}
         />
         <button
-
           className="bg-green-300 m-2 px-4 py-1 rounded-lg hover:bg-green-500 font-bold"
           onClick={() => {
             const filteredRes = listOfRestorents.filter((res) =>
@@ -61,7 +64,7 @@ const Body = () => {
           Search
         </button>
         <button
-        className="ml-5 bg-gray-300 m-2 px-4 py-1 rounded-lg hover:bg-green-500 font-bold"
+          className="ml-5 bg-gray-300 m-2 px-4 py-1 rounded-lg hover:bg-green-500 font-bold"
           onClick={() => {
             const filteredList = listOfRestorents?.filter(
               (res) => res.info.avgRating >= 4.3
@@ -72,6 +75,12 @@ const Body = () => {
         >
           Top Rated Restorunts
         </button>
+
+        <input
+          className="border-indigo-600 border-2 p-2"
+          value={loggedInUser}
+          onChange={(e) => setUserName(e.target.value)}
+        />
       </div>
 
       <div className="flex flex-wrap  gap-5 bg">
@@ -80,9 +89,11 @@ const Body = () => {
             to={"/restaurants/" + restaurant?.info?.id}
             key={restaurant?.info?.id}
           >
-            {restaurant.info.isOpen ? <ResWithOpenTime resData={restaurant}/> : <ResCard resData={restaurant} />}
-
-            
+            {restaurant.info.isOpen ? (
+              <ResWithOpenTime resData={restaurant} />
+            ) : (
+              <ResCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>

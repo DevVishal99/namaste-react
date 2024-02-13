@@ -1,3 +1,4 @@
+import { useState } from "react";
 import useRestaurantMenu from "../utlis/useRestaurantMenu";
 import RestaurantCatogery from "./RestaurantCatogery";
 import Shimmer from "./Shimmer";
@@ -6,6 +7,7 @@ import { useParams } from "react-router-dom";
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const resMenu = useRestaurantMenu(resId);
+  const [item, setItem] = useState(0)
 
   // console.log(resMenu);
 
@@ -27,7 +29,6 @@ const RestaurantMenu = () => {
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
 
-
   return (
     <div className="text-center">
       <h1 className="font-bold m-4 text-2xl">{name}</h1>
@@ -35,8 +36,13 @@ const RestaurantMenu = () => {
         Ratings {avgRating} - {costForTwoMessage}
       </p>
       <div className="res-menu">
-        {catogories.map((catogery) => (
-          <RestaurantCatogery data={catogery?.card?.card} />
+        {catogories.map((catogery,index) => (
+          <RestaurantCatogery
+            key={catogery?.card?.card?.title}
+            data={catogery?.card?.card}
+            showItems={index==item}
+            setItem={() => setItem(index)}
+          />
         ))}
       </div>
     </div>

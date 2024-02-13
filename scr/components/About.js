@@ -1,6 +1,7 @@
 import UserFunction from "./UserFunction";
 import UserClass from "./UserClass";
 import React from "react";
+import UserContext from "../utlis/UserContext";
 
 class About extends React.Component{
 
@@ -28,6 +29,10 @@ class About extends React.Component{
                 <h2>
                     Our Team
                 </h2>
+                <UserContext.Consumer>
+                    {({loggedInUser}) => <h1 className="font-bold">User : {loggedInUser   }</h1>} 
+                    </UserContext.Consumer>
+                
                 <UserClass name ={"First"} location={"Bangalore"} contact ={"vishal@gmail.com"}/>    
             </div>
 
