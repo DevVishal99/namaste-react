@@ -48,6 +48,7 @@ const Body = () => {
         <input
           className="m-5 p-1 border border-black"
           value={searchText}
+          data-testid = "inputText"
           onChange={(e) => {
             setSearchText(e.target.value);
           }}
@@ -83,14 +84,14 @@ const Body = () => {
         />
       </div>
 
-      <div className="flex flex-wrap  gap-5 bg">
+      <div className="flex flex-wrap  gap-5 bg" >
         {filteredRestaurents.map((restaurant) => (
           <Link
             to={"/restaurants/" + restaurant?.info?.id}
             key={restaurant?.info?.id}
           >
             {restaurant.info.isOpen ? (
-              <ResWithOpenTime resData={restaurant} />
+              <ResWithOpenTime resData={restaurant}/>
             ) : (
               <ResCard resData={restaurant} />
             )}

@@ -11,10 +11,15 @@ const Cart = () =>{
     }
 
     const cartItems = useSelector((store) => store.cart.items);
+
+    if (cartItems== null){
+        return <p>Please Add Items to your cart</p>
+    }
     return(
         <><div className="text-center font-bold text-2xl m-5 p-5">Cart</div>
         <div className="text-center">
-        <button className="text-center m-2 p-2 bg-black text-white rounded-2xl" onClick={handleClear}>Clear cart</button>
+        <button className="text-center m-2 p-2 bg-black text-white rounded-2xl" onClick={handleClear}>Clear cart
+        </button>
         </div>
         
         <div className="w-6/12 m-auto">

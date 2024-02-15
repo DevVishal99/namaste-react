@@ -14,6 +14,7 @@ const ItemList = ({ items }) => {
         <div
           key={item.card.info.id}
           className="m-2 p-2 border-gray-200 border-b-2 text-left"
+          data-testid = "foodItems"
         >
           {" "}
           <div className="flex justify-between">

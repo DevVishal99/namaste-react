@@ -5,10 +5,11 @@ import UserContext from "../utlis/UserContext";
 const ResCard = (props) => {
   const {loggedInUser} = useContext(UserContext);
   const { resData } = props;
+
   const { name, cuisines, avgRating, costForTwo, cloudinaryImageId } =
     resData?.info;
   return (
-    <div className="w-56 h-96 bg-gray-200 hover:bg-gray-300 rounded-md">
+    <div className="w-56 h-96 bg-gray-200 hover:bg-gray-300 rounded-md" data-testid = "res-test-id">
       <div className="res-logo px-8 py-4">
         <img
           className="w-44 rounded-md shadow-lg"

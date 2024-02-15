@@ -5,13 +5,13 @@ import useOnlineStatus from "../utlis/useOnlineStatus";
 import UserContext from "../utlis/UserContext";
 import { useSelector } from "react-redux";
 
+
 const Header = () => {
     const [loginBtn , setLoginBtn] = useState('login') 
     const OnlineStatus = useOnlineStatus();
     const data = useContext(UserContext);
     const {loggedInUser} = data;
     const cartItems = useSelector((store) => store.cart.items)
-    console.log(cartItems)
     
     
     return (
