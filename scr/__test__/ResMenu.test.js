@@ -36,7 +36,7 @@ it("Should contain Restaurant Menu", async () => {
   expect(screen.getAllByTestId("foodItems").length).toBe(15);
 
   const addBtns = screen.getAllByRole("button", { name: "ADD+" });
-  console.log(addBtns.length);
+
 
   expect(screen.getByText("Cart (0items)")).toBeInTheDocument();
   

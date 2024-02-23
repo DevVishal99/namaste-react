@@ -10,17 +10,17 @@ class About extends React.Component{
         this.state={
 
         }
-        console.log("Parent Cunstructor")
+        
     }
 
     componentDidMount(){
 
-        console.log("Parent componentDidMount")
+        
 
     }
 
     render(){
-        console.log("Parent Render");
+        
         return (
             <div className="about">
                 <h1>

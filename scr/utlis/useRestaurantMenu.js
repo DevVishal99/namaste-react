@@ -11,7 +11,14 @@ const useRestaurantMenu = (resId) =>{
     },[])
 
     const fetchData = async ()=>{
-        const data = await fetch(MENU_URL + resId);
+        const headers= {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Origin': '*',
+            'Access-Control-Allow-Headers': '*',
+            'Access-Control-Allow-Origin': '*',
+          }
+        const data = await fetch(MENU_URL + resId,headers);
         const json = await data.json();
 
         setResMenu(json.data);

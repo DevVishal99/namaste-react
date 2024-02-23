@@ -19,8 +19,16 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
+
+    const headers= {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Origin': '*',
+      'Access-Control-Allow-Headers': '*',
+      'Access-Control-Allow-Origin': '*',
+  }
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9698196&lng=77.7499721&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://cors-anywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9698196&lng=77.7499721&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING", headers
     );
 
     const json = await data.json();
@@ -39,6 +47,7 @@ const Body = () => {
         Seems like you are offline.. Please Check Your Internet Connection🫠🫠
       </h2>
     );
+    
 
   return listOfRestorents.length === 0 ? (
     <Shimmer />
