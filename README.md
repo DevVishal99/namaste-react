@@ -7,8 +7,6 @@
 3. Interactive Menus: Click on any restaurant to explore a detailed menu with mouthwatering options.
 4. Effortless Cart Management: Add your desired menu items to the cart with a click, and clear it whenever you want.
 <br>
-<br>
-
 **🔧 Tech Stack:**<br>
 1. React Js: Ensuring a responsive and dynamic user interface.
 2. Redux Toolkit: State management made efficient and scalable.
